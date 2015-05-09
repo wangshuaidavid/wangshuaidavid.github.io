@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于开源 DLNA_iOS_Platinum  | 之隅·王大卫</title>
+  <meta name="author" content="Wang Shuai">
+  
+  <meta name="description" content="程序员 ios nodejs java javascript etc.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="关于开源 DLNA_iOS_Platinum "/>
+  <meta property="og:site_name" content="之隅·王大卫"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="之隅·王大卫" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?53e8ecfd30f6d254979df873f9e396d0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</script>
+
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">之隅·王大卫</a></h1>
+  <h2><a href="/">千里の道も一歩から</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-05-09T02:02:07.000Z"><a href="/2015/05/09/AboutDLNAProject/">2015-05-09</a></time>
+      
+      
+  
+    <h1 class="title">关于开源 DLNA_iOS_Platinum </h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>之前在 <a href="http://www.mobilogics.com.tw/" target="_blank" rel="external">Mobilogics</a> (非常好的公司 ^^) 公司工作的时候，为了给当时开发的一个硬体 <strong>TV Dongle</strong>（俗称电视棒儿）做了一个基于 <a href="http://baike.baidu.com/link?url=Iv4bsC2wSH6bqD0TbP2vqM2fmYayz_HRVzgZCGBtDMvvcIb8S5faoMcFtCbP8ZIobdbJuLHeiklVj6d7Ti3X7a" target="_blank" rel="external">DLNA</a> 的 DMS 媒体资源服务器。<br><a id="more"></a><br>名字是 <a href="https://itunes.apple.com/cy/app/imediapal/id556750019?mt=8" target="_blank" rel="external"><strong>iMediaPal</strong></a>，使用了赫赫有名的 <a href="http://www.plutinosoft.com/platinum/" target="_blank" rel="external"><strong>Platinum</strong></a> 这套 DLNA SDK，不过后来公司那里也一直没有提更新升级的需要，所以这个 APP release 了 1.0 版本后，就再也再也没有更新过…它还是基于 <strong>iOS 5.0</strong> 的。</p>
+<p>后来也就是去年还是前年，在 <a href="http://www.cocoachina.com/" target="_blank" rel="external">cocoachina</a> 上发现有人 <a href="http://www.cocoachina.com/bbs/read.php?tid=264397&amp;page=1#1162229" target="_blank" rel="external">“跪求 iOS DLNA demo”</a> 于是就回复了他，后来就陆陆续续有人发邮件来要这个 APP 的 source code。后来觉得这样直接给人家不好，毕竟是给之前公司做的，算公司的 property， 我这么搞，估计小陈先生会睡不好觉。而且项目中大量使用了公司技术大神为公司专门封装的 SDK：无论 UI 的控件、基础工具，还是 Platinum SDK 全都封了进去，包山包海。 </p>
+<p>没了这个 Mobilogics SDK，项目不光跑不起来，而且里面的代码也没啥看头。但是网上的同志们发来的邮件中流露出的都是那种迫切，焦急的感觉，大部分都是项目需要，毕竟也是过来人，那种被项目悲催，而且要使用陌生技术的无力感，顿时让我们彼此的心灵产生了极大的共鸣（-_-#）。</p>
+<p>于是用业余时间，重新开了个项目，重新 build Platinum 的 SDK，复用之前的 code，改吧改吧，弄了一个完全基于开源包的 <a href="https://github.com/wangshuaidavid/DLNA_iOS_Platinum" target="_blank" rel="external"><strong>DLNA_iOS_Platinum</strong></a>。 发到了 github 上，然后回复了这些同志们，有几个还加了 qq ，保持了很好的沟通，感觉还不错，起了些作用。</p>
+<p>他们有的项目的需求更进一步，还需要一个 <strong>DMC</strong> 的工具，加入对媒体的控制功能。这个我想等以后有时间，把这个项目做的内容丰富一些。之前给公司做的里面内置了 <strong>HTTP Server</strong> 并在手机端有一套相对完整的文件操作的实现，可以上传视频、图片然后给 DMP 播放。这些功能在这个开源的项目中就都砍了，没时间搞，想等以后有时间了就加入 WebDAV 啊，之类的功能，甚至加点 video trim 的东西，做的完整点然后放到 APP Store 上，不过，呵呵感觉还挺花时间的。</p>
+<p>想说的是，之前在加入 <strong>Platinum</strong> 进入 iOS 项目中，总是有很多莫名其妙的错误，因为 <strong>Platinum</strong> 为了跨平台用 C++ 写的，而且还搞了 <strong>Neptune</strong> 的 <strong>C++ Runtime</strong>。 这代码基本上是 TMD 没法子看了。为了能在 iOS 中能顺利编译 C++， 不得不使用传说中的 <strong>Objective C++</strong>，这玩意在有一年的 WWDC 大会上 <em>(哪一年忘了应该是11年，讲 Compiler 优化的一集)</em> 苹果自己也说，这玩意就是一个 <strong>monster</strong>。也许是这份恐惧导致我总是没法正常的把 <strong>Platinum</strong> 加到项目中，后来才不得不让公司大牛都封装到了公司的 SDK 中为了让我不在做噩梦。</p>
+<p>但是！这次新建这个项目的时候，MD 异常顺利， 一扫多年压在心头的，加入 Framework 不成功的心理阴霾。应该是之后的 XCode 做了优化，不用手动去配置一堆乱七八走的编译时参数，通过这件事情我还是挺感激生活的。我也参考了网上的<a href="http://www.cnblogs.com/zwj911112/p/4244223.html" target="_blank" rel="external">一篇文章</a>,他基本上吧流程说清楚了，不过加入后需要注意在所有的引用到和需要用到 <strong>Platinum C++ code</strong> 的文件中，所有 <strong>.m</strong> 的文件名需要改成 <strong>.mm</strong> 用来通知编译器，编译它的时候支持 C++ 的语法分析，否则会报告几十个 Error， 并且错误提示基本上看不出来为什么。</p>
+<p>整个复写的结构也很直观，全部采用 Delegate 方式写，并且自己实现了3套 Delegate，分别可以吧</p>
+<ol>
+<li>本地 APP 目录结构中的媒体文件放出去；</li>
+<li>手机 iTunes 中的歌曲和视频放出去；</li>
+<li>手机照片中的照片和视频放出去；</li>
+</ol>
+<hr>
+<p>项目的 github 地址是<a href="https://github.com/wangshuaidavid/DLNA_iOS_Platinum" target="_blank" rel="external">这里</a>, 附上了中英文说明，有4个人 Star 了它，我很高兴。希望能帮到更多的人。有需要的话会在 README 中多介绍下结构，没有就算了。觉得还有有时间多搞点功能好一点。</p>
+<p>以后看时间情况，会陆续把之前写过的有些参考价值的代码，share 出来，以报无私的开源人士之开源之恩。我这个是，<strong>投我和田玉，我报小石子。</strong> ^_^</p>
+<p>so， That’s all.  Have a nice day.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Article/">Article</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/git/">git</a>, <a href="/tags/iOS/">iOS</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/05/03/firstpost/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangshuai007"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Article/">Article</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Misc/">Misc</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>2</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>2</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>王帅</li>
+<li>David | 程序员</li>
+<li>现状：ENN</li>
+<font color="blue">e-mail：wangshuaii@yeah.net</font>
+</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+WangShuai | <a href="https://github.com/wangshuaidavid">My github</a>, 2015
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wangshuaidavid" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>

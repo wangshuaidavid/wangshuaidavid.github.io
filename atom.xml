@@ -4,7 +4,7 @@
   <subtitle><![CDATA[千里の道も一歩から]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-05-07T01:43:17.000Z</updated>
+  <updated>2015-05-09T03:24:40.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,19 +15,81 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[关于开源 DLNA_iOS_Platinum ]]></title>
+    <link href="http://yoursite.com/2015/05/09/AboutDLNAProject/"/>
+    <id>http://yoursite.com/2015/05/09/AboutDLNAProject/</id>
+    <published>2015-05-09T02:02:07.000Z</published>
+    <updated>2015-05-09T03:24:40.000Z</updated>
+    <content type="html"><![CDATA[<p>之前在 <a href="http://www.mobilogics.com.tw/" target="_blank" rel="external">Mobilogics</a> (非常好的公司 ^^) 公司工作的时候，为了给当时开发的一个硬体 <strong>TV Dongle</strong>（俗称电视棒儿）做了一个基于 <a href="http://baike.baidu.com/link?url=Iv4bsC2wSH6bqD0TbP2vqM2fmYayz_HRVzgZCGBtDMvvcIb8S5faoMcFtCbP8ZIobdbJuLHeiklVj6d7Ti3X7a" target="_blank" rel="external">DLNA</a> 的 DMS 媒体资源服务器。<br><a id="more"></a><br>名字是 <a href="https://itunes.apple.com/cy/app/imediapal/id556750019?mt=8" target="_blank" rel="external"><strong>iMediaPal</strong></a>，使用了赫赫有名的 <a href="http://www.plutinosoft.com/platinum/" target="_blank" rel="external"><strong>Platinum</strong></a> 这套 DLNA SDK，不过后来公司那里也一直没有提更新升级的需要，所以这个 APP release 了 1.0 版本后，就再也再也没有更新过…它还是基于 <strong>iOS 5.0</strong> 的。</p>
+<p>后来也就是去年还是前年，在 <a href="http://www.cocoachina.com/" target="_blank" rel="external">cocoachina</a> 上发现有人 <a href="http://www.cocoachina.com/bbs/read.php?tid=264397&amp;page=1#1162229" target="_blank" rel="external">“跪求 iOS DLNA demo”</a> 于是就回复了他，后来就陆陆续续有人发邮件来要这个 APP 的 source code。后来觉得这样直接给人家不好，毕竟是给之前公司做的，算公司的 property， 我这么搞，估计小陈先生会睡不好觉。而且项目中大量使用了公司技术大神为公司专门封装的 SDK：无论 UI 的控件、基础工具，还是 Platinum SDK 全都封了进去，包山包海。 </p>
+<p>没了这个 Mobilogics SDK，项目不光跑不起来，而且里面的代码也没啥看头。但是网上的同志们发来的邮件中流露出的都是那种迫切，焦急的感觉，大部分都是项目需要，毕竟也是过来人，那种被项目悲催，而且要使用陌生技术的无力感，顿时让我们彼此的心灵产生了极大的共鸣（-_-#）。</p>
+<p>于是用业余时间，重新开了个项目，重新 build Platinum 的 SDK，复用之前的 code，改吧改吧，弄了一个完全基于开源包的 <a href="https://github.com/wangshuaidavid/DLNA_iOS_Platinum" target="_blank" rel="external"><strong>DLNA_iOS_Platinum</strong></a>。 发到了 github 上，然后回复了这些同志们，有几个还加了 qq ，保持了很好的沟通，感觉还不错，起了些作用。</p>
+<p>他们有的项目的需求更进一步，还需要一个 <strong>DMC</strong> 的工具，加入对媒体的控制功能。这个我想等以后有时间，把这个项目做的内容丰富一些。之前给公司做的里面内置了 <strong>HTTP Server</strong> 并在手机端有一套相对完整的文件操作的实现，可以上传视频、图片然后给 DMP 播放。这些功能在这个开源的项目中就都砍了，没时间搞，想等以后有时间了就加入 WebDAV 啊，之类的功能，甚至加点 video trim 的东西，做的完整点然后放到 APP Store 上，不过，呵呵感觉还挺花时间的。</p>
+<p>想说的是，之前在加入 <strong>Platinum</strong> 进入 iOS 项目中，总是有很多莫名其妙的错误，因为 <strong>Platinum</strong> 为了跨平台用 C++ 写的，而且还搞了 <strong>Neptune</strong> 的 <strong>C++ Runtime</strong>。 这代码基本上是 TMD 没法子看了。为了能在 iOS 中能顺利编译 C++， 不得不使用传说中的 <strong>Objective C++</strong>，这玩意在有一年的 WWDC 大会上 <em>(哪一年忘了应该是11年，讲 Compiler 优化的一集)</em> 苹果自己也说，这玩意就是一个 <strong>monster</strong>。也许是这份恐惧导致我总是没法正常的把 <strong>Platinum</strong> 加到项目中，后来才不得不让公司大牛都封装到了公司的 SDK 中为了让我不在做噩梦。</p>
+<p>但是！这次新建这个项目的时候，MD 异常顺利， 一扫多年压在心头的，加入 Framework 不成功的心理阴霾。应该是之后的 XCode 做了优化，不用手动去配置一堆乱七八走的编译时参数，通过这件事情我还是挺感激生活的。我也参考了网上的<a href="http://www.cnblogs.com/zwj911112/p/4244223.html" target="_blank" rel="external">一篇文章</a>,他基本上吧流程说清楚了，不过加入后需要注意在所有的引用到和需要用到 <strong>Platinum C++ code</strong> 的文件中，所有 <strong>.m</strong> 的文件名需要改成 <strong>.mm</strong> 用来通知编译器，编译它的时候支持 C++ 的语法分析，否则会报告几十个 Error， 并且错误提示基本上看不出来为什么。</p>
+<p>整个复写的结构也很直观，全部采用 Delegate 方式写，并且自己实现了3套 Delegate，分别可以吧</p>
+<ol>
+<li>本地 APP 目录结构中的媒体文件放出去；</li>
+<li>手机 iTunes 中的歌曲和视频放出去；</li>
+<li>手机照片中的照片和视频放出去；</li>
+</ol>
+<hr>
+<p>项目的 github 地址是<a href="https://github.com/wangshuaidavid/DLNA_iOS_Platinum" target="_blank" rel="external">这里</a>, 附上了中英文说明，有4个人 Star 了它，我很高兴。希望能帮到更多的人。有需要的话会在 README 中多介绍下结构，没有就算了。觉得还有有时间多搞点功能好一点。</p>
+<p>以后看时间情况，会陆续把之前写过的有些参考价值的代码，share 出来，以报无私的开源人士之开源之恩。我这个是，<strong>投我和田玉，我报小石子。</strong> ^_^</p>
+<p>so， That’s all.  Have a nice day.</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>之前在 <a href="http://www.mobilogics.com.tw/">Mobilogics</a> (非常好的公司 ^^) 公司工作的时候，为了给当时开发的一个硬体 <strong>TV Dongle</strong>（俗称电视棒儿）做了一个基于 <a href="http://baike.baidu.com/link?url=Iv4bsC2wSH6bqD0TbP2vqM2fmYayz_HRVzgZCGBtDMvvcIb8S5faoMcFtCbP8ZIobdbJuLHeiklVj6d7Ti3X7a">DLNA</a> 的 DMS 媒体资源服务器。<br>]]>
+    
+    </summary>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
+    
+      <category term="Article" scheme="http://yoursite.com/categories/Article/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[第一篇 Hello World]]></title>
     <link href="http://yoursite.com/2015/05/03/firstpost/"/>
     <id>http://yoursite.com/2015/05/03/firstpost/</id>
     <published>2015-05-03T06:59:13.000Z</published>
-    <updated>2015-05-07T01:43:17.000Z</updated>
-    <content type="html"><![CDATA[<p>你好</p>
+    <updated>2015-05-09T03:11:31.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="开了个博客">开了个博客</h3><p>记录一些技术之类相关的东西，其他也记录。</p>
+<hr>
+<p>之前封闭让开发一些照片处理和拼接视频的Prototype，发现网上基本没有介绍如何将 iOS 的 Animation，转换成视频文件的内容，于是自己就搞了一个 persistent 的 utility，可以讲自己建立的 Core Animation 持久化输出到视频文件（m4a）的文件里。<br><a id="more"></a><br>使用比较熟悉的 <strong>AVFoundation</strong> 来做，效果还可以，不过感觉效率不是特别的理想，但是要做这样的优化势必要使用更低层的 Media manipulation 的库，而它们的复杂度和 AVFoundation 比…</p>
+<p>使用的语言是 Swift，用的不多，但是感觉 Swift 非常好，它里面的编程范式我感觉就是之后程序开发语言的趋势，良好的函数式编程支持和 extension 扩展是我现阶段比较喜欢的，而且代码写起来的感觉很酷，有点侠客的意思，在语言的框架内提供了相当强的灵活性。个人觉得学个 Swift 语言很不错，如果和号称未来可以比肩 C 的 Go 语言，一起看一下会发现，两个挺像的，因为这样的 features 是计算机语言的未来 (<strong>@_@</strong>)。哪样的 features 呢？在 <a href="https://developer.apple.com/swift/" target="_blank" rel="external">Apple 的 introducing Swift</a> 里面提到</p>
+<ul>
+<li>Closures unified with function pointers</li>
+<li>Tuples and multiple return values</li>
+<li>Generics</li>
+<li>Fast and concise iteration over a range or collection</li>
+<li>Structs that support methods, extensions, protocols.</li>
+<li>Functional programming patterns, e.g.: map and filter</li>
+</ul>
+<p>如果用一个单词形容一下 Swift，就是官网里面用到的那个 <strong>Modern</strong>。 不禁感叹这就是编程语言届最时尚的潮品啊。<strong>程序员潮不潮，不看装扮，看语言。</strong></p>
+<hr>
+<p>这个工具发布到了 <strong>Cocoapods</strong> 中，方便其它项目快速加入，加入 Cocoapods Spec 的过程还挺有意思，网上有篇教程是使用 pull request 来做的，但是后来 pods 改用相对灵活的 Trunk 方式来加入，整个过程简化了，全部用命令行就可以完成新的项目的添加，还是挺方便的，而且也不用像之前需要等待 pods 的工作人员来手动 merge 你的 pull request，可谓即提交即用，<strong>GOOD！</strong> 。因为改了新的提交方式，有意思的事情是，所有之前 pull request 的提交全部都 reject，而且这些 reject 的Spec，大部分我看都是中国人写的，估计和我一样都是参考网上那篇挺好的老教程做的吧 ：）。一篇比较新的介绍可以参考<a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">这里</a>，免得 Cocoapods 的工作人员一次次的 reject 您老的每一次 pull request。</p>
+<p>继续说这个工具，名字叫<a href="https://github.com/wangshuaidavid/WSDynamicAlbumMaker" target="_blank" rel="external">WSDynamicAlbumMaker</a>，并且已经有2个人star了（<strong>yeah！</strong> ^^!）。具体的使用方法可以看项目里的 <a href="https://github.com/wangshuaidavid/WSDynamicAlbumMaker/blob/master/README.md" target="_blank" rel="external">README.md</a>文件，我觉得写的还算能看懂。</p>
+<p>其中里面还标配了一个 Demo ，功能是用户选择手机中相册的几张照片，然后使用 fade in/out 的方式把照片一个个显示一遍，类似一个简单的动态影集。例子中的功能不是重点，重点是吧 CAnimation 给搞到视频文件了。所有使用人只要专心用写 Core Animation 的动画，导入视频文件的工作，包括计算动画的开始时间之类的，可以用这个工具来做。还可以给视频加个背景音乐。</p>
+<p>有需要的可以试一试。个人认为还行。</p>
+<p>如果有任何建议，可以在 github 中加 issue，真是盼望能有几个 issue 过过瘾…</p>
+<p><img src="http://i2.tietuku.com/5873e5b7a9a0f300.jpg" alt="掮客"></p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>你好</p>
-]]>
+    <![CDATA[<h3 id="开了个博客">开了个博客</h3><p>记录一些技术之类相关的东西，其他也记录。</p>
+<hr>
+<p>之前封闭让开发一些照片处理和拼接视频的Prototype，发现网上基本没有介绍如何将 iOS 的 Animation，转换成视频文件的内容，于是自己就搞了一个 persistent 的 utility，可以讲自己建立的 Core Animation 持久化输出到视频文件（m4a）的文件里。<br>]]>
+    
     </summary>
     
       <category term="Misc" scheme="http://yoursite.com/tags/Misc/"/>
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+      <category term="iOS" scheme="http://yoursite.com/tags/iOS/"/>
     
       <category term="Article" scheme="http://yoursite.com/categories/Article/"/>
     

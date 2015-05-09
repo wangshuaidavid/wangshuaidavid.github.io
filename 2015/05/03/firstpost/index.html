@@ -96,7 +96,26 @@ var _hmt = _hmt || [];
     </header>
     <div class="entry">
       
-        <p>你好</p>
+        <h3 id="开了个博客">开了个博客</h3><p>记录一些技术之类相关的东西，其他也记录。</p>
+<hr>
+<p>之前封闭让开发一些照片处理和拼接视频的Prototype，发现网上基本没有介绍如何将 iOS 的 Animation，转换成视频文件的内容，于是自己就搞了一个 persistent 的 utility，可以讲自己建立的 Core Animation 持久化输出到视频文件（m4a）的文件里。<br><a id="more"></a><br>使用比较熟悉的 <strong>AVFoundation</strong> 来做，效果还可以，不过感觉效率不是特别的理想，但是要做这样的优化势必要使用更低层的 Media manipulation 的库，而它们的复杂度和 AVFoundation 比…</p>
+<p>使用的语言是 Swift，用的不多，但是感觉 Swift 非常好，它里面的编程范式我感觉就是之后程序开发语言的趋势，良好的函数式编程支持和 extension 扩展是我现阶段比较喜欢的，而且代码写起来的感觉很酷，有点侠客的意思，在语言的框架内提供了相当强的灵活性。个人觉得学个 Swift 语言很不错，如果和号称未来可以比肩 C 的 Go 语言，一起看一下会发现，两个挺像的，因为这样的 features 是计算机语言的未来 (<strong>@_@</strong>)。哪样的 features 呢？在 <a href="https://developer.apple.com/swift/" target="_blank" rel="external">Apple 的 introducing Swift</a> 里面提到</p>
+<ul>
+<li>Closures unified with function pointers</li>
+<li>Tuples and multiple return values</li>
+<li>Generics</li>
+<li>Fast and concise iteration over a range or collection</li>
+<li>Structs that support methods, extensions, protocols.</li>
+<li>Functional programming patterns, e.g.: map and filter</li>
+</ul>
+<p>如果用一个单词形容一下 Swift，就是官网里面用到的那个 <strong>Modern</strong>。 不禁感叹这就是编程语言届最时尚的潮品啊。<strong>程序员潮不潮，不看装扮，看语言。</strong></p>
+<hr>
+<p>这个工具发布到了 <strong>Cocoapods</strong> 中，方便其它项目快速加入，加入 Cocoapods Spec 的过程还挺有意思，网上有篇教程是使用 pull request 来做的，但是后来 pods 改用相对灵活的 Trunk 方式来加入，整个过程简化了，全部用命令行就可以完成新的项目的添加，还是挺方便的，而且也不用像之前需要等待 pods 的工作人员来手动 merge 你的 pull request，可谓即提交即用，<strong>GOOD！</strong> 。因为改了新的提交方式，有意思的事情是，所有之前 pull request 的提交全部都 reject，而且这些 reject 的Spec，大部分我看都是中国人写的，估计和我一样都是参考网上那篇挺好的老教程做的吧 ：）。一篇比较新的介绍可以参考<a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">这里</a>，免得 Cocoapods 的工作人员一次次的 reject 您老的每一次 pull request。</p>
+<p>继续说这个工具，名字叫<a href="https://github.com/wangshuaidavid/WSDynamicAlbumMaker" target="_blank" rel="external">WSDynamicAlbumMaker</a>，并且已经有2个人star了（<strong>yeah！</strong> ^^!）。具体的使用方法可以看项目里的 <a href="https://github.com/wangshuaidavid/WSDynamicAlbumMaker/blob/master/README.md" target="_blank" rel="external">README.md</a>文件，我觉得写的还算能看懂。</p>
+<p>其中里面还标配了一个 Demo ，功能是用户选择手机中相册的几张照片，然后使用 fade in/out 的方式把照片一个个显示一遍，类似一个简单的动态影集。例子中的功能不是重点，重点是吧 CAnimation 给搞到视频文件了。所有使用人只要专心用写 Core Animation 的动画，导入视频文件的工作，包括计算动画的开始时间之类的，可以用这个工具来做。还可以给视频加个背景音乐。</p>
+<p>有需要的可以试一试。个人认为还行。</p>
+<p>如果有任何建议，可以在 github 中加 issue，真是盼望能有几个 issue 过过瘾…</p>
+<p><img src="http://i2.tietuku.com/5873e5b7a9a0f300.jpg" alt="掮客"></p>
 
       
     </div>
@@ -111,7 +130,7 @@ var _hmt = _hmt || [];
         
   
   <div class="tags">
-    <a href="/tags/Misc/">Misc</a>
+    <a href="/tags/Misc/">Misc</a>, <a href="/tags/git/">git</a>, <a href="/tags/iOS/">iOS</a>
   </div>
 
       
@@ -123,6 +142,8 @@ var _hmt = _hmt || [];
 
 
  <nav id="pagination" >
+    
+    <a href="/2015/05/09/AboutDLNAProject/" class="alignleft prev" >上一页</a>
     
     
     <div class="clearfix"></div>
@@ -166,7 +187,7 @@ var duoshuoQuery = {short_name:"wangshuai007"};
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Article/">Article</a><small>1</small></li>
+    <li><a href="/categories/Article/">Article</a><small>2</small></li>
   
   </ul>
 </div>
@@ -178,6 +199,10 @@ var duoshuoQuery = {short_name:"wangshuai007"};
   <ul class="entry">
   
     <li><a href="/tags/Misc/">Misc</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>2</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>2</small></li>
   
   </ul>
 </div>
