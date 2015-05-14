@@ -1,0 +1,289 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于 iOS Architecture | 之隅·王大卫</title>
+  <meta name="author" content="Wang Shuai">
+  
+  <meta name="description" content="程序员 ios nodejs java javascript etc.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="关于 iOS Architecture"/>
+  <meta property="og:site_name" content="之隅·王大卫"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="之隅·王大卫" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?53e8ecfd30f6d254979df873f9e396d0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</script>
+
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">之隅·王大卫</a></h1>
+  <h2><a href="/">千里の道も一歩から</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-05-14T22:09:55.000Z"><a href="/2015/05/15/SomeThingAboutiOSArchitecture/">2015-05-15</a></time>
+      
+      
+  
+    <h1 class="title">关于 iOS Architecture</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>iOS 的开发做了几年了，对于 iOS 项目的架构部分说说感受。<br>大家都熟悉的是，iOS 以及 Mac 桌面程序，苹果提供的项目架构 Pattern 是经典的 MVC 模式，它提供了很好的解耦结构，项目中不同层次的隔离也可以做的很清楚。但是做过几个项目后会发现，MVC 在一些模块和结构还不会很复杂的项目中，功能发挥的还不错，但是如果项目功能稍微过大，它就显得有些力量不足。<br><a id="more"></a><br>原因其实也很简单， MVC 直接的定义了，模型、视图、控制器的隔离，并规定了3个层次之间沟通的一些规则（以后会分析，建议看看斯坦福那套教程 MVC 的介绍那部分，也就10多分钟，没见过其它讲的更清楚的了），但是毕竟只是直接提到了3个大层次，如果项目中使用一个 Full-Life-Cycle 的 service 如何放置它，甚至一些 Utiliy 类，它们的 expose scope 有多大等，这些问题在 MVC 的架构中没有明显的层次划分，这都需要开发人员，仔细思考一下如何安排他们。总之，经常见到的就是一个代码量庞大的 ViewController 和夹杂了业务逻辑的 View。</p>
+<p>看过很多 iOS 开发人员，用 ViewController 打天下的现象，使得 VC 中的代码又难度，结构又乱，毕竟界面控制和业务逻辑都在里面，于是写很多 <code>mask －</code> 把文件内的 code 分成一堆一堆，也没有什么改善。</p>
+<p>对于如何编写一个轻量级的 View Controller 可以参考一下<a href="http://objccn.io/issue-1-1/" target="_blank" rel="external">这篇文章</a>的建议, 合理的分离，不仅让文件中代码清晰，而且代码可复用率增强以及测试的便利。</p>
+<p>前段时间，peek 了一下许总的 <code>IBM Navigation</code> 项目结构，感觉结构很陌生， IBM 就爱搞这个，挺简单的东西他们一搞，基本上就。。。</p>
+<p>这两天看了看 <a href="http://objccn.io/issue-13/" target="_blank" rel="external">objc中国-架构</a> 部分的文章，感觉项目中尝试一下 VIPER 还是挺好的，不过它涉及的对象比较多，规模不是很大的项目使用的时候应该适当的 trim 一下。至于 MVVM 和其它的方式，我觉得不是很好用，之前做 WPF 开发的时候到 MVVM 很多，觉得在 OC 项目中套入这个模式，能带来的简化效果不大，意义不一定很大。至于  ReactiveCocoa 还是建议使用一下， 有一定的 learning curve 但是，用起来后感觉还是挺不错的，而且对反应式编程了解一下挺好。</p>
+<p>有个例子是 github 上的<a href="https://github.com/RuiAAPeres/iOSArchitecture" target="_blank" rel="external">这个项目</a>,它和 VIPER 相似的也就是有个简单的 Interactor 类，结构分的比较细，每个文件的 code 比较少，但是文件数目过多，一开始不太习惯，但是后来发觉还不错，比严格的 VIPER 好理解一些。</p>
+<p>好一点的是 <a href="https://github.com/luisobo/clean-architecture" target="_blank" rel="external">Clean Architecture for iOS</a> 喜欢的是里面注册 Service 部分的 code 一定要拿来用用。</p>
+<p>项目中 README 中的一段描述觉得挺好的，说了传统项目结构的问题，也说了如何组织结构的一些原则：</p>
+<hr>
+<h4 id="Goals_of_this_Project">Goals of this Project</h4><p>One of the main issues across the iOS development ecosystem is the lack of a well stablished architecture, from small to big applications.<br>There is also a huge gap of Repositories/Projects/Samples that show what an app should look like, from a architectural point of view. </p>
+<p>You can see that when:</p>
+<ul>
+<li>You have Logic mixed with UI.</li>
+<li>You cannot see the boundaries between the Controller and the Model (MVC)</li>
+<li>Your <code>UIViewControllers</code> surpass 300 lines (From my experience when a <code>UIViewController</code> passes that frontier, normally something could be done better)</li>
+<li>It’s not clear for you where things are and how to use them.</li>
+</ul>
+<p>Each project has it’s own demons, so what I want with this sample project, is a way for iOS developers to have a reference for what they should <strong>always</strong> try to achieve:</p>
+<ul>
+<li>Strive for small, simple, clean, <strong>understandable</strong> and maintainable classes.</li>
+<li>Respect the <a href="http://www.codeproject.com/Articles/60845/The-S-O-L-I-D-Object-Oriented-Programming-OOP-Prin" target="_blank" rel="external">SOLID principles</a>.</li>
+<li>Respect the DRY Principle.</li>
+<li>Respect the 4 OOP principles: Encapsulation, Abstraction, Inheritance, Polymorphism.</li>
+<li><strong>Create methods that do one thing and one thing only</strong> (this is specially useful for Unit Testing).</li>
+<li>Create meaningful names for your methods, classes, variables, properties. <strong>This is one of the most underestimated part of coding.</strong></li>
+</ul>
+<hr>
+<p>总之，当你在面对刚刚 new 好的项目，并且头绪万千无从下手的时候， 看看上面第二部分的建议，不管用的哪种<strong>项目结构指导</strong>只要用这些建议作为尺子量一下，好的项目就诞生了。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Article/">Article</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/iOS/">iOS</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/05/13/bestPracticeiOS/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangshuai007"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Article/">Article</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Misc/">Misc</a><small>1</small></li>
+  
+    <li><a href="/tags/Ref/">Ref</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>2</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>4</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>王帅</li>
+<li>David | 程序员</li>
+<li>现状：ENN</li>
+<font color="blue">e-mail：wangshuaii@yeah.net</font>
+</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+WangShuai | <a href="https://github.com/wangshuaidavid">My github</a>, 2015
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wangshuaidavid" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
