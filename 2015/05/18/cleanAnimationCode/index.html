@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>写清晰的 iOS 动画代码 | 之隅·王大卫</title>
+  <meta name="author" content="Wang Shuai">
+  
+  <meta name="description" content="程序员 ios nodejs java javascript etc.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="写清晰的 iOS 动画代码"/>
+  <meta property="og:site_name" content="之隅·王大卫"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="之隅·王大卫" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?53e8ecfd30f6d254979df873f9e396d0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</script>
+
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">之隅·王大卫</a></h1>
+  <h2><a href="/">千里の道も一歩から</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-05-18T01:31:16.000Z"><a href="/2015/05/18/cleanAnimationCode/">2015-05-18</a></time>
+      
+      
+  
+    <h1 class="title">写清晰的 iOS 动画代码</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>之前在逛 stackoverflow 的时候，发现了 <a href="http://ronnqvi.st/" target="_blank" rel="external"><strong>ronnqvi</strong> 的博客</a> 里面的一些内容看了一些，觉得很不错，尤其是在动画和绘图方面能把一些问题描述的很清楚，觉得利用平时时间翻译一些他比较有价值的文章还是挺好的。</p>
+<p>翻译讲究个<strong>信达雅</strong>，我不打算一行行规规矩矩的翻译，比较麻烦。想用类似读书笔记的方式翻译，想多说的就多说点<br>想skip掉就skip掉，把觉得重要的东西说到了就好。</p>
+<p>这篇文章介绍了 iOS 动画代码的一些问题，在写 ios 动画代码的时候，经常会代码比较长，而且不太好组织。这里 <strong>ronnqvi</strong> 介绍了一些他的经验，可以参考。</p>
+<p>比较好的内容就是可以更好的理解一下 <strong>CABasic Animation</strong> 和 <strong>Keyframe Animation</strong> 的使用，尤其是<br>刚接触 <strong>Core Animation</strong> 的同志，多多少少会有些搞不清楚。</p>
+<h2 id="写清晰的_iOS_动画代码">写清晰的 iOS 动画代码</h2><p>好的代码应该是简洁(Clear)，可读性强，如何做到呢？</p>
+<p>建议可以参考遵行一些 <strong>最佳实践</strong> 之类的东西，但是要明白一件事情，如果遵循它的原因只是因为有个人这样说所以就这样做，具体原因并不是很明白，那就很被动了。因为技术一天一个样子，变化很多，今天的 API 和最佳实践，过段时间可能就过时了，而自己没有明白最佳实践为何这样规定，就盲目的遵循，这样编码就会成为一种很机械的工作。</p>
+<p>总之，代码应该是：干净，精炼，可读性强的。如果自己做不到这样的要求，那就找个比你做的好的的，参考他的做法，作为实践的指导，这是参考 <strong>最佳实践</strong> 的原因；搞清楚它的内容中是要求。<br><a id="more"></a><br>作为一个软件开发工作者，如何写出简洁和可读性强的代码是非常难解决的。因为这需要一个好的程序结构、耦合低的代码、一个对象只具有一个职责等这些比较高要求的开发能力。但是本文要说的不是这些，而是想介绍一些写代码的细节，用于写一些可读性强，能准确表达核心功能的代码。</p>
+<h3 id="不要没事就使用功能很强的_API，去完成一个很简单的功能">不要没事就使用功能很强的 API，去完成一个很简单的功能</h3><p>实现一个功能可以有很多的方法。封装在高层的 API 是调用底层 API 来实现的，他们使用起来更直观方便，把很多底层 API 的细节给屏蔽了，所以写出来的代码也比较直观。</p>
+<p>但是不是说你不能使用底层 API，有时候恰恰相反，但是要明白，如果要使用底层 API 到底是为什么要跳过<br>简单方便的而非要用它，给个合理的理由来。</p>
+<p>比如在 iOS 动画的代码里面 <strong>UIVIew</strong> 提供的 animation 功能是在 Core Animation 的功能上实现的，使用 <strong>UIView</strong> 提供的动画 API 可以很方便的实现针对 View 的动画和底层 CAlayer 的 Animatable<br>perperty 的动画，方便的很。比如：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[UIView animateWithDuration:0.5</span><br><span class="line">                 animations:<span class="comment">^&#123;</span><br><span class="line">                     myView.center = newPosition;</span><br><span class="line">                 &#125;</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *move =</span><br><span class="line">   [CABasicAnimation <span class="string">animationWithKeyPath:</span>@<span class="string">"position"</span>];</span><br><span class="line">move.duration = <span class="number">0.5</span>;</span><br><span class="line">move.fromValue = [NSValue <span class="string">valueWithCGPoint:</span>myView.center];</span><br><span class="line"></span><br><span class="line">myView.center = newPosition;</span><br><span class="line">[myView.layer <span class="string">addAnimation:</span>move <span class="string">forKey:</span>@<span class="string">"move my view"</span>];</span><br></pre></td></tr></table></figure>
+<p>这两个代码块比较一下，当我看到代码时候，我不考虑 API 自身的复杂性和这个功能的代码块有几行代码，用代码行的长度来衡量是不是好代码，这个挺傻的。我关心的是，这个代码预期要给我表达的东西和它本身到底表达的怎么样，也就是有没有很到位的表示清楚它想要表达的。</p>
+<p>当我读第一块代码的时候，我一下就能知道这个是一个动画代码块，而且使用的是 UIView 的 Animation 我就多多少少知道这个 API 本身的能力和具体的动画执行代码是在这个 Block 块里面定义，而且代码也就是对一个或者多个 View 中和显示相关的属性值的修改，然后数值反应在动画上。</p>
+<p>当我读第二块代码的时候，一看就可以知道是针对位置的 CABasicAnimation，就能判断到之后的代码就是针对这个做的一些更复杂的限定，比如会有个相关的动画在后面，或者限定动画的执行时间之类的一些细节做的一些工作，但是我会想，为什么用它而不用 UIView 的 animation，是因为使用到了 UIView API 做不到的功能么？反正肯定是有原因，否则应该不会使用它。</p>
+<p>同样在对比 Basic Animation 和 Keyframe Animation 时，同样都是 Core Animation 的子类，但是 Keyframe Animation 功能要强的多，我会理解 Keyframe Animation 会做所有 Basic Animation 能做的。那如果发现代码中使用到了 Keyframe Animation 那肯定是有相对坚实的理由选择它。</p>
+<ul>
+<li><strong>Basic Animation 是用来对 Layer 的一个 property 从一个值变成另一个值来使用的动画工具；</strong></li>
+<li><strong>Keyframe Animation 是用来对 Layer 的一个 property 多个数值之间变换使用的动画工具。</strong></li>
+</ul>
+<p>所以选择后者应该是使用了 Basic Animation 做不到的功能。</p>
+<p>比如下面的 3D 旋转的动画代码：</p>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CABasicAnimation *<span class="built_in">rotate</span> =</span><br><span class="line">  [CABasicAnimation animationWithKeyPath:@<span class="string">"transform.rotation.y"</span>];</span><br><span class="line"><span class="built_in">rotate</span>.fromValue = @<span class="number">0</span>;</span><br><span class="line"><span class="built_in">rotate</span>.toValue   = @(M_PI);</span><br><span class="line"><span class="built_in">rotate</span>.duration  = <span class="number">1.5</span>;</span><br><span class="line">[myLayer addAnimation:<span class="built_in">rotate</span> forKey:@<span class="string">"rotate around Y"</span>];</span><br></pre></td></tr></table></figure>
+<figure class="highlight processing"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CAKeyframeAnimation *<span class="built_in">rotate</span> =</span><br><span class="line">  [CAKeyframeAnimation animationWithKeyPath:@<span class="string">"transform.rotation.y"</span>];</span><br><span class="line"><span class="built_in">rotate</span>.values   = @[@<span class="number">0</span>, @(M_PI)];</span><br><span class="line"><span class="built_in">rotate</span>.keyTimes = @[@<span class="number">0</span>, @<span class="number">1</span>];</span><br><span class="line"><span class="built_in">rotate</span>.duration = <span class="number">1.5</span>;</span><br><span class="line">[myLayer addAnimation:<span class="built_in">rotate</span> forKey:@<span class="string">"rotate around Y"</span>];</span><br></pre></td></tr></table></figure>
+<p>当读到第一块的第一行的时候就知道，这个是使用 Basic Animation 并且用到了 Key-Path<br><a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Key-ValueCodingExtensions/Key-ValueCodingExtensions.html#//apple_ref/doc/uid/TP40004514-CH12-SW2 (Core Animation: Key-Value Coding Extensions" target="_blank" rel="external">the Core Animation extensions</a> 指定了属性的动画。这一行可以充分说明2点：</p>
+<ol>
+<li>UIView 的动画实现不了这个功能，所以不使用 UIView 的动画；</li>
+<li>并且因为是 Basic Animation 所以功能就是从一个数值变为另外一个。</li>
+</ol>
+<p>但是第二块第一行，使用 Keyframe Animation 没有上述的第二个信息，我们需要继续往下读，才能确定它是变为一个数值，还是中间要变多个数值。所以如果以 <strong>代码能暗示的和第一眼看来给你的信息和它真正要做的是否匹配</strong>，<br>这个作为一个衡量来看的话，明显第二块代码的描述是不够简洁的。</p>
+<p>在新的 iOS7 中加入了 UIView keyframe animations， 在 UIView 动画这层加入了对 Keyframe animation<br>的动画支持，如果你问我这个什么时候使用和它的一些 best practice 之类的问题，我的回答是。我不知道。所以我很少使用它，并不是说你不能用，而是说它在我的代码工具包里面吧， 是被 skip 掉的。当我看到使用了 UIView 的 Keyframe animations，我搞不明白这个代码期望的是什么，其实就是说，它不能很好的提供一个使用的理由，本身也不是很简洁，无法直观的表达代码的功能。（译者：UIView keyframe animation 用一下发现还是挺好用的，如果在 UIKit 层，使用它还是很方便的）</p>
+<p>使用同样的道理说明一下这个例子，你可以使用一个嵌套动画块来实现对一个属性多次数值的改变。比如下面的例子，把 background 颜色从红变到绿然后到蓝：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[UIView animateWithDuration:0.3 animations:<span class="comment">^&#123;</span><br><span class="line">    myView.backgroundColor = [UIColor redColor];</span><br><span class="line">&#125;</span> completion:^<span class="list">(<span class="keyword">BOOL</span> finished)</span> <span class="collection">&#123;</span><br><span class="line">    <span class="collection">[UIView animateWithDuration:0.3 animations:<span class="comment">^&#123;</span><br><span class="line">        myView.backgroundColor = [UIColor blueColor];</span><br><span class="line">    &#125;</span> completion:^<span class="list">(<span class="keyword">BOOL</span> finished)</span> <span class="collection">&#123;</span><br><span class="line">        <span class="collection">[UIView animateWithDuration:0.3 animations:<span class="comment">^&#123;</span><br><span class="line">            myView.backgroundColor = [UIColor greenColor];</span><br><span class="line">        &#125;</span>]</span><span class="comment">;</span></span><br><span class="line">    &#125;</span>]</span><span class="comment">;</span></span><br><span class="line">&#125;</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>这样的代码我只关心的是，这个代码很难直接的告诉我，这些动画执行<strong>需要多长时间</strong>，我需要看进去每一个 block 然后计算一下；还有就是我需要看一看每一个 block 是不是真的只是修改一个 View 的 background color，看似很像，区别却很大：</p>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="collection">[UIView animateWithDuration:.3 animations:<span class="comment">^&#123;</span><br><span class="line">    myView.backgroundColor = [UIColor redColor];</span><br><span class="line">&#125;</span> completion:^<span class="list">(<span class="keyword">BOOL</span> finished)</span> <span class="collection">&#123;</span><br><span class="line">    <span class="collection">[UIView animateWithDuration:.3 animations:<span class="comment">^&#123;</span><br><span class="line">        // another view is changing</span><br><span class="line">        otherView.backgroundColor = [UIColor blueColor];</span><br><span class="line">    &#125;</span> completion:^<span class="list">(<span class="keyword">BOOL</span> finished)</span> <span class="collection">&#123;</span><br><span class="line">        <span class="collection">[UIView animateWithDuration:.3 animations:<span class="comment">^&#123;</span><br><span class="line">            // another property is changing</span><br><span class="line">            myView.alpha = 0.0;</span><br><span class="line">        &#125;</span>]</span><span class="comment">;</span></span><br><span class="line">    &#125;</span>]</span><span class="comment">;</span></span><br><span class="line">&#125;</span>]</span><span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<p>但是如果使用 keyframe animation 的话，代码就非常简洁直观，以下的代码一下就能确定只是对一个 view 的background<br>color 的改变，并且能一眼就看到动画持续的时间：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CAKeyframeAnimation</span> *changeColor =</span><br><span class="line">  [<span class="built_in">CAKeyframeAnimation</span> animationWithKeyPath:<span class="string">@"backgroundColor"</span>];</span><br><span class="line">changeColor<span class="variable">.values</span> = @[(<span class="keyword">id</span>)[<span class="built_in">UIColor</span> redColor]<span class="variable">.CGColor</span>,</span><br><span class="line">                       (<span class="keyword">id</span>)[<span class="built_in">UIColor</span> greenColor]<span class="variable">.CGColor</span>,</span><br><span class="line">                       (<span class="keyword">id</span>)[<span class="built_in">UIColor</span> blueColor]<span class="variable">.CGColor</span>];</span><br><span class="line">changeColor<span class="variable">.duration</span> = <span class="number">0.9</span>;</span><br><span class="line"><span class="comment">// If it should keep the last value after the animation</span></span><br><span class="line">myView<span class="variable">.backgroundColor</span> = [<span class="built_in">UIColor</span> blueColor];</span><br><span class="line"></span><br><span class="line">[myView<span class="variable">.layer</span> addAnimation:changeColor forKey:<span class="string">@""</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="尽力追求精确">尽力追求精确</h3><p>Core Animation 加入了 <strong>Key-Value Coding Addtions</strong>，可以使用 key-value 的方式指定需要动画的属性，这个是很便利的方法，可以大大简化你 animation 的代码，不仅清晰而且不用敲很多重复代码。当你想要针对 <strong>opacity</strong> 来实现动画的时候，其实也是暗示了我没有使用 <strong>backgroundcolor</strong>、<strong>cornerRadius</strong>、<strong>transform</strong>、<strong>position</strong> 等。我们写代码的时候总是会想哪些 key path 没有执行动画，除非指定的 path 非常的精准，比如想变换 view 的位置可以指定 <strong>position</strong> 来实现，更好的做法是这样做，<strong>position.y</strong>，这样的指定很清晰明白，你不需要建立一个 <strong>transform</strong> 对象来实现坐标转换，直接指定到那一个值，然后赋值就可以完成动画，不仅清晰明白，而且不用考虑那些动画不需要 path，可以很好的聚焦问题，所以建议多参考<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Key-ValueCodingExtensions/Key-ValueCodingExtensions.html#//apple_ref/doc/uid/TP40004514-CH12-SW2 (Core Animation: Key-Value Coding Extensions" target="_blank" rel="external">这个文章</a>。</p>
+<h3 id="使用_Group_来避免写重复的代码">使用 Group 来避免写重复的代码</h3><p><strong>Don’t repeat yourself （DRY）</strong>，一个很基本的编程规则，同样的代码，或者同样功能的代码最好不要在一个文件出现多次。如果需要对多个属性进行动画，那就需要使用 <strong>Group</strong> 来避免过多的重复逻辑的代码。把一些通用的配置写在 <strong>group</strong> 中，组织针对多个属性的多个动画，是很好的实践：</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">CABasicAnimation</span> *fade =</span><br><span class="line">  [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"opacity"</span>];</span><br><span class="line">fade<span class="variable">.toValue</span> = @<span class="number">0.0</span>;</span><br><span class="line"><span class="comment">// the rest of the configuration comes from the group</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">CABasicAnimation</span> *flip =</span><br><span class="line">  [<span class="built_in">CABasicAnimation</span> animationWithKeyPath:<span class="string">@"transform.rotation.y"</span>];</span><br><span class="line">flip<span class="variable">.toValue</span> = @(M_PI_2);</span><br><span class="line"><span class="comment">// the rest of the configuration comes from the group</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">CAAnimationGroup</span> *fadeAndFlip = [<span class="built_in">CAAnimationGroup</span> animation];</span><br><span class="line">fadeAndFlip<span class="variable">.animations</span> = @[fade, flip];</span><br><span class="line">fadeAndFlip<span class="variable">.duration</span> = <span class="number">1.0</span>;</span><br><span class="line">fadeAndFlip<span class="variable">.timingFunction</span> =</span><br><span class="line">  [<span class="built_in">CAMediaTimingFunction</span> functionWithName:k<span class="built_in">CAMediaTimingFunctionEaseIn</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// Only because the view is disappearing (see next topic)</span></span><br><span class="line">fadeAndFlip<span class="variable">.fillMode</span> = k<span class="built_in">CAFillModeForwards</span>;</span><br><span class="line">fadeAndFlip<span class="variable">.removedOnCompletion</span> = <span class="literal">NO</span>;</span><br><span class="line">fadeAndFlip<span class="variable">.delegate</span> = <span class="keyword">self</span>;</span><br><span class="line"></span><br><span class="line">[myView<span class="variable">.layer</span> addAnimation:fadeAndFlip</span><br><span class="line">                    forKey:<span class="string">@"fade out and flip over"</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="如果一些动画只是用来装饰_UI_的，那么就显示的定义它，不要用_implicit_Animation">如果一些动画只是用来装饰 UI 的，那么就显示的定义它，不要用 implicit Animation</h3><p>在使用 Core Animation 的时候，有些经验的知道使用 <strong>removedOnComplition ＝ NO</strong> 来避免动画运行完毕后，view 跳回到初试状态。<a href="http://ronnqvi.st/multiple-animations/" target="_blank" rel="external">（作者在之前的一篇文章中做了很好的解释）</a> 需要说明的是，当对一个 CALayer 的属性做动画的时候，这个 CALayer 对象的实际值并没有改变，如果打印一下 log 就能看到，在动画执行期间还是之后，对象实际的数值没有改变。</p>
+<p>这是因为动画执行时，会根据对象实际的值，生成一个展示数值 <strong>presentation Value</strong>，用于给屏幕展示。在苹果官方文档中提到过</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The data <span class="keyword">and</span> state information <span class="keyword">of</span> a layer object <span class="keyword">is</span> decoupled <span class="keyword">from</span> <span class="keyword">the</span></span><br><span class="line">visual presentation <span class="keyword">of</span> <span class="keyword">that</span> layer’s content onscreen.</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Objects <span class="operator">in</span> <span class="operator">the</span> presentation tree contain <span class="operator">the</span> <span class="operator">in</span>-flight values <span class="keyword">for</span> <span class="keyword">any</span></span><br><span class="line">running animations.</span><br></pre></td></tr></table></figure>
+<p>就是对象的实际值和屏幕显示的数值不一定一致（译者我：在 iOS 的 view 显示中，有两套系统，其中一个是 render tree 的是用于展示图像和动画的，和实际的 model tree 是 duplicate 的两个系统，这些对理解动画很有帮助。）</p>
+<p>当一个动画结束后，它会被自动的从 layer 中移除掉，然后屏幕显示它 model 中的数值，也就是动画结束后会跳回初始状态的原因，避免这个有两个种方法：</p>
+<ol>
+<li>指定动画的 <strong>removedOnCompletion ＝ NO</strong> 和 <strong>fillMode ＝ kCAFillModeForwards</strong>；这样动画结束后不会被移除；</li>
+<li>在<strong>动画开始前</strong>，设定 model 的数值，等于动画后的数值；</li>
+</ol>
+<p>第一种方法，苹果在 2007年 WWDC 的 session 上说过，不过问题是：这种方法会有一个很严重的问题：屏幕显示的属性数值和程序中实际 model 是数值不一致，这会导致很多奇奇怪怪的问题。作者列举了一下。</p>
+<p>第二种方法是被推荐的，因为它能保持实际数值和先是数值的同步，保证代码中和你看到的数值是一致的，这样可以避免很多麻烦，<br>如果需要一个连续变化，装饰性的动画，那么 Model 的数值应该被设置成动画结束后的那个数值。中间数值就在 presentation tree 上让它为了演示临时存在一下就可以。这也算是一种最佳的实践吧。</p>
+<p>在使用第二种方法的时候，可能会遇到一些奇怪的问题，展示的可能和你想的不一样，<a href="http://ronnqvi.st/multiple-animations/" target="_blank" rel="external">可以看看这里</a>。这里只要记住在动画开始前，设置 model 的数值，就不会有问题。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Article/">Article</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/iOS/">iOS</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/05/15/SomeThingAboutiOSArchitecture/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangshuai007"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Article/">Article</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Misc/">Misc</a><small>1</small></li>
+  
+    <li><a href="/tags/Ref/">Ref</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>2</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>5</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>王帅</li>
+<li>David | 程序员</li>
+<li>现状：ENN</li>
+<font color="blue">e-mail：wangshuaii@yeah.net</font>
+</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+WangShuai | <a href="https://github.com/wangshuaidavid">My github</a>, 2015
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wangshuaidavid" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
