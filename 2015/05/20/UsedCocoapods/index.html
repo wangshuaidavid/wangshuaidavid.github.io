@@ -1,0 +1,276 @@
+
+
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>我经常使用的 Cocoapods 中的库（Objective-C 版） | 之隅·王大卫</title>
+  <meta name="author" content="Wang Shuai">
+  
+  <meta name="description" content="程序员 ios nodejs java javascript etc.">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="我经常使用的 Cocoapods 中的库（Objective-C 版）"/>
+  <meta property="og:site_name" content="之隅·王大卫"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.ico" rel="icon" type="image/x-ico">
+  <link rel="alternate" href="/atom.xml" title="之隅·王大卫" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <script src="//libs.baidu.com/jquery/1.8.0/jquery.min.js"></script>
+
+  
+<script type="text/javascript">
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?53e8ecfd30f6d254979df873f9e396d0";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</script>
+
+
+
+</head>
+
+
+<body>
+  <header id="header" class="inner">
+<div class="alignleft">
+  <h1><a href="/">之隅·王大卫</a></h1>
+  <h2><a href="/">千里の道も一歩から</a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">首页</a></li>
+    
+      <li><a href="/archives">归档</a></li>
+    
+      <li><a href="/about">关于</a></li>
+    
+	<li> <a href="/atom.xml">RSS</a> </li>
+
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>
+</header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2015-05-20T09:45:13.000Z"><a href="/2015/05/20/UsedCocoapods/">2015-05-20</a></time>
+      
+      
+  
+    <h1 class="title">我经常使用的 Cocoapods 中的库（Objective-C 版）</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>我经常使用的 Cocoapods 中的库（Objective-C 版）<br>从几个项目里面摘出来的，以后可以直接copy，之后会做一个 swift 版的。</p>
+<a id="more"></a>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">pod <span class="string">"AFNetworking"</span></span><br><span class="line">pod <span class="string">"DLog"</span></span><br><span class="line">pod <span class="string">"DOSingleton"</span></span><br><span class="line">pod <span class="string">"ColorUtils"</span></span><br><span class="line">pod <span class="string">"SSToolkit"</span> <span class="comment">//很多内容的工具类</span></span><br><span class="line">pod <span class="string">'MSDynamicsDrawerViewController'</span></span><br><span class="line">pod <span class="string">'SGActionView'</span></span><br><span class="line">pod <span class="string">'MJRefresh'</span></span><br><span class="line">pod <span class="string">'BlocksKit'</span></span><br><span class="line">pod <span class="string">'Masonry'</span></span><br><span class="line">pod <span class="string">'POP+MCAnimate'</span></span><br><span class="line">pod <span class="string">'MBProgressHUD'</span></span><br><span class="line">pod <span class="string">'TTTAttributedLabel'</span></span><br><span class="line">pod <span class="string">'TPKeyboardAvoiding'</span></span><br><span class="line">pod <span class="string">'JDStatusBarNotification'</span></span><br><span class="line">pod <span class="string">"UIImage-Helpers"</span></span><br><span class="line">pod <span class="string">'RDVTabBarController'</span></span><br><span class="line">pod <span class="string">'PNChart'</span></span><br><span class="line">pod <span class="string">'UIViewController+KeyboardAnimation'</span></span><br><span class="line">pod <span class="string">"KVNMaskedPageControl"</span></span><br><span class="line">pod <span class="string">'MMPlaceHolder'</span> <span class="comment">//用于界面布局的测试使用</span></span><br><span class="line">pod <span class="string">'Mantle'</span></span><br><span class="line">pod <span class="string">'UIImage+BlurredFrame'</span></span><br><span class="line">pod <span class="string">"TSMessages"</span></span><br><span class="line">pod <span class="string">'NZAlertView'</span></span><br><span class="line">pod <span class="string">"MSAlertController"</span></span><br><span class="line">pod <span class="string">"STAlertView"</span></span><br><span class="line">pod <span class="string">'Nocilla'</span> <span class="comment">//Stunning HTTP stubbing for iOS and OS X. Testing HTTP requests has never been easier.</span></span><br><span class="line">pod <span class="string">'NyaruDB'</span></span><br><span class="line">pod <span class="string">'FRDLivelyButton'</span></span><br><span class="line">pod <span class="string">'NYSegmentedControl'</span></span><br><span class="line">pod <span class="string">"RATreeView"</span></span><br><span class="line">pod <span class="string">'SSLunarDate'</span> <span class="comment">//lunar date util</span></span><br><span class="line">pod <span class="string">"SAMCache"</span> <span class="comment">// depercate</span></span><br><span class="line">pod <span class="string">'IGLDropDownMenu'</span></span><br><span class="line">pod <span class="string">'ChameleonFramework'</span> <span class="comment">//UIKit wrapper for Mac OS</span></span><br><span class="line">pod <span class="string">'MMDrawerController'</span> <span class="comment">//很好用 很强大</span></span><br><span class="line">pod <span class="string">'Nimbus'</span>  <span class="comment">//酌情使用 重点参考</span></span><br><span class="line">pod <span class="string">'CKStringUtils'</span>, <span class="string">'~&gt; 2.0.1'</span>   <span class="id">#http</span>:<span class="comment">//cocoadocs.org/docsets/CKStringUtils/2.0.1/Classes/CKStringUtils.html</span></span><br><span class="line">pod <span class="string">'FBGlowLabel'</span>, :git =&gt; <span class="string">'https://github.com/lyokato/FBGlowLabel.git'</span></span><br><span class="line">pod <span class="string">'FastSocket'</span>  <span class="comment">// 非常好的 socket</span></span><br><span class="line">pod <span class="string">"JDFTooltips"</span> <span class="comment">// depercate</span></span><br><span class="line">pod <span class="string">'TSMessages'</span></span><br><span class="line">pod <span class="string">'RNFrostedSidebar'</span> <span class="comment">// 挺不错的 slider</span></span><br><span class="line">pod <span class="string">"PulsingHalo"</span> <span class="comment">// 挺好玩的工具类</span></span><br><span class="line">pod <span class="string">"SpinKit"</span> <span class="comment">// css</span></span><br><span class="line">pod <span class="string">"BEMSimpleLineGraph"</span></span><br><span class="line">pod <span class="string">"MagicPie"</span></span><br><span class="line">pod <span class="string">"DLRadioButton"</span></span><br><span class="line">pod <span class="string">'BBBadgeBarButtonItem'</span></span><br><span class="line">pod <span class="string">"CorePlot"</span></span><br><span class="line">pod <span class="string">"MagicalRecord"</span></span><br><span class="line">pod <span class="string">"MHRotaryKnob"</span></span><br><span class="line">pod <span class="string">'ASValueTrackingSlider'</span></span><br></pre></td></tr></table></figure>
+<h3 id="不错的一个_Categories_集合">不错的一个 Categories 集合</h3><p><a href="https://github.com/shaojiankui/IOS-Categories" target="_blank" rel="external">Categories</a><br><a href="http://www.cocoachina.com/industry/20140212/7808.html" target="_blank" rel="external">cocoachina 上面的Categories</a></p>
+<h3 id="目录的组织："><a href="http://blog.codingcoder.com/ios-project-directory-structure/" target="_blank" rel="external">目录的组织：</a></h3><ol>
+<li>Main，这是程序的入口，包括 AppDelegate 和 Main.Storyboard</li>
+<li>Section, 这里放各个相对独立的业务模块相关的代码，比如登陆模块、设置页面等</li>
+<li>General，这里放一些通用的、可以在各个业务模块之间复用的代码。比如一些 Category, Class 以及一些基本控件等</li>
+<li>Helper，这里放得是一些辅助类，可以把一些Manager放在这里</li>
+<li>Model，这是模型类。可以把用到的基本模型类放在这里，比如User 模型类，Setting 模型类等</li>
+<li>Macro，这个目录主要放一些宏，并且再细分为 AppMacro, UtilMacro, VendorMacro等</li>
+<li>Vendor，这个目录是用来放一些第三方库或者其他的支持库的，并且这里存放的是一些和工程依赖比较严重的库，如果依赖不重，可以考虑使用 cocoapods 来管理</li>
+<li>Lua，  这个目录比较特殊，由于我在工程中使用了 Lua 技术，所以把 Lua 文件单独放在这里管理</li>
+<li>Resource， 这是资源目录，具体又包括 Image 和 Sound 两个细分目录，存放用到的图片和音频资源</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Article/">Article</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/iOS/">iOS</a>
+  </div>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+ <nav id="pagination" >
+    
+    
+    <a href="/2015/05/18/cleanAnimationCode/" class="alignright next" >下一页</a>
+    
+    <div class="clearfix"></div>
+</nav>
+
+
+
+<section id="comment">
+
+<!-- Duoshuo Comment BEGIN -->
+	<div class="ds-thread"></div>
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"wangshuai007"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = 'http://static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0]
+		|| document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- Duoshuo Comment END -->
+
+
+</section>
+
+
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="搜索">
+    <input type="hidden" name="q" value="site:yoursite.com">
+  </form>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Article/">Article</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  <ul class="entry">
+  
+    <li><a href="/tags/Misc/">Misc</a><small>1</small></li>
+  
+    <li><a href="/tags/Ref/">Ref</a><small>1</small></li>
+  
+    <li><a href="/tags/git/">git</a><small>2</small></li>
+  
+    <li><a href="/tags/iOS/">iOS</a><small>6</small></li>
+  
+  </ul>
+</div>
+
+
+  <div class="widget tag">
+<h3 class="title">简介</h3>
+<ul class="entry">
+<li>王帅</li>
+<li>David | 程序员</li>
+<li>现状：ENN</li>
+<font color="blue">e-mail：wangshuaii@yeah.net</font>
+</ul>
+</div>
+
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><section>
+WangShuai | <a href="https://github.com/wangshuaidavid">My github</a>, 2015
+</section>
+<div class="clearfix"></div>
+</footer>
+  <script src="//libs.baidu.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</body>
+</html>
+
+
+<a href="https://github.com/wangshuaidavid" target="_blank"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
