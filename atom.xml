@@ -4,7 +4,7 @@
   <subtitle><![CDATA[千里の道も一歩から]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-05-20T10:00:56.000Z</updated>
+  <updated>2015-05-22T01:41:48.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[关于 Exif]]></title>
+    <link href="http://yoursite.com/2015/05/22/aboutExif/"/>
+    <id>http://yoursite.com/2015/05/22/aboutExif/</id>
+    <published>2015-05-22T01:11:33.000Z</published>
+    <updated>2015-05-22T01:41:48.000Z</updated>
+    <content type="html"><![CDATA[<p>项目上处理照片，发现有照片翻转的情况，从照片的 Exif 入手解决这个问题,罗列一些url：</p>
+<h3 id="介绍文章">介绍文章</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http:</span><span class="comment">//www.daveperrett.com/articles/2012/07/28/exif-orientation-handling-is-a-ghetto/</span></span><br><span class="line"><span class="string">http:</span><span class="comment">//sylvana.net/jpegcrop/exif_orientation.html</span></span><br></pre></td></tr></table></figure>
+<h3 id="android_tutorial">android tutorial</h3><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">http</span>://wptrafficanalyzer.<span class="operator">in</span>/blog/android-correcting-jpeg-image-orientation-<span class="operator">in</span>-view-canvas-<span class="operator">with</span>-exifinterface-orientation-tag/</span><br><span class="line"><span class="keyword">https</span>://gist.github.com/<span class="number">9</span>re/<span class="number">1990019</span></span><br><span class="line"><span class="keyword">http</span>://stackoverflow.com/questions/<span class="number">23205759</span>/setting-android-photo-exif-orientation</span><br><span class="line"><span class="keyword">http</span>://stackoverflow.com/questions/<span class="number">5574561</span>/exif-data-tag-orientation-always-<span class="number">0</span></span><br><span class="line"><span class="keyword">http</span>://stackoverflow.com/questions/<span class="number">20478765</span>/how-<span class="built_in">to</span>-<span class="built_in">get</span>-<span class="operator">the</span>-correct-orientation-<span class="operator">of</span>-<span class="operator">the</span>-image-selected-<span class="built_in">from</span>-<span class="operator">the</span>-default-image</span><br><span class="line"><span class="keyword">http</span>://www.codeproject.com/Articles/<span class="number">11305</span>/EXIFextractor-library-<span class="built_in">to</span>-extract-EXIF-information</span><br><span class="line"><span class="keyword">http</span>://developer.android.com/reference/android/media/ExifInterface.html  (API)</span><br></pre></td></tr></table></figure>
+<h3 id="工具网站">工具网站</h3><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">http:</span><span class="comment">//regex.info/exif.cgi</span></span><br><span class="line"><span class="string">http:</span><span class="comment">//www.exifviewer.org/</span></span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>项目上处理照片，发现有照片翻转的情况，从照片的 Exif 入手解决这个问题,罗列一些url：</p>
+<h3 id="介绍文章">介绍文章</h3><figure class="highlight groovy"><table><tr><td class="gutter">]]>
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Photo" scheme="http://yoursite.com/tags/Photo/"/>
+    
+      <category term="Article" scheme="http://yoursite.com/categories/Article/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[我经常使用的 Cocoapods 中的库（Objective-C 版）]]></title>
