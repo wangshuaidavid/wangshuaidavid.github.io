@@ -4,7 +4,7 @@
   <subtitle><![CDATA[千里の道も一歩から]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2015-05-22T07:05:07.000Z</updated>
+  <updated>2015-05-26T02:13:30.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[定制 Mac Terminal]]></title>
+    <link href="http://yoursite.com/2015/05/26/CustomizeTerminalOnMac/"/>
+    <id>http://yoursite.com/2015/05/26/CustomizeTerminalOnMac/</id>
+    <published>2015-05-26T02:03:18.000Z</published>
+    <updated>2015-05-26T02:13:30.000Z</updated>
+    <content type="html"><![CDATA[<p>上午发现因为装了<strong>土行孙</strong>来科学上网，Mac 的Terminal 提示符变了，后来搜了一下找到一片文章，在这里 mark 一下。</p>
+<hr>
+<h3 id="Terminal">Terminal</h3><h4 id="自定义提示符">自定义提示符</h4><p>默认的提示符又长又别扭，还是喜欢改成Ubuntu的那种风格。在~/.bash_profile（不是.bashrc了）中添加：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PS1="<span class="command">\u</span>@<span class="command">\h</span>:<span class="command">\w</span> <span class="formula">$"</span></span><br></pre></td></tr></table></figure>
+<p>需要另外设置颜色的话可以参考这个和那个。</p>
+<h4 id="ls和grep的高亮">ls和grep的高亮</h4><p>向~/.bash_profile中加入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLICOLOR=<span class="number">1</span></span><br><span class="line"><span class="built_in">export</span> GREP_OPTIONS=<span class="string">"--color=auto"</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置终端的主题">设置终端的主题</h4><p>到这里就已经有了一个彩色的终端了，然而光有颜色还是不够的。只有精美的字体和搭配良好的颜色才能使命令行显得不是那么的枯燥乏味，因此还需要一个好的主题。这里推荐使用<a href="http://ethanschoonover.com/solarized" target="_blank" rel="external">Solarized</a>。</p>
+<hr>
+<p>剩下的看<a href="http://equation85.github.io/blog/customize-terminal-on-mac/" target="_blank" rel="external">原文</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>上午发现因为装了<strong>土行孙</strong>来科学上网，Mac 的Terminal 提示符变了，后来搜了一下找到一片文章，在这里 mark 一下。</p>
+<hr>
+<h3 id="Terminal">Terminal</h3><h4 id="自定义提示符">自]]>
+    </summary>
+    
+      <category term="Article" scheme="http://yoursite.com/categories/Article/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[临时文章总汇]]></title>

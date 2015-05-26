@@ -87,6 +87,61 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
+        <time datetime="2015-05-26T02:03:18.000Z"><a href="/2015/05/26/CustomizeTerminalOnMac/">2015-05-26</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/2015/05/26/CustomizeTerminalOnMac/">定制 Mac Terminal</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>上午发现因为装了<strong>土行孙</strong>来科学上网，Mac 的Terminal 提示符变了，后来搜了一下找到一片文章，在这里 mark 一下。</p>
+<hr>
+<h3 id="Terminal">Terminal</h3><h4 id="自定义提示符">自定义提示符</h4><p>默认的提示符又长又别扭，还是喜欢改成Ubuntu的那种风格。在~/.bash_profile（不是.bashrc了）中添加：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PS1="<span class="command">\u</span>@<span class="command">\h</span>:<span class="command">\w</span> <span class="formula">$"</span></span><br></pre></td></tr></table></figure>
+<p>需要另外设置颜色的话可以参考这个和那个。</p>
+<h4 id="ls和grep的高亮">ls和grep的高亮</h4><p>向~/.bash_profile中加入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLICOLOR=<span class="number">1</span></span><br><span class="line"><span class="built_in">export</span> GREP_OPTIONS=<span class="string">"--color=auto"</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置终端的主题">设置终端的主题</h4><p>到这里就已经有了一个彩色的终端了，然而光有颜色还是不够的。只有精美的字体和搭配良好的颜色才能使命令行显得不是那么的枯燥乏味，因此还需要一个好的主题。这里推荐使用<a href="http://ethanschoonover.com/solarized" target="_blank" rel="external">Solarized</a>。</p>
+<hr>
+<p>剩下的看<a href="http://equation85.github.io/blog/customize-terminal-on-mac/" target="_blank" rel="external">原文</a></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
         <time datetime="2015-05-22T01:48:04.000Z"><a href="/2015/05/22/tempURLS/">2015-05-22</a></time>
       
       
@@ -366,55 +421,6 @@ var _hmt = _hmt || [];
 
 
 
-  <article class="post">
-  
-    <div class="gallery">
-  <div class="photoset">
-    
-      <img src="">
-    
-  </div>
-  <div class="control">
-    <div class="prev"></div>
-    <div class="next"></div>
-  </div>
-</div>
-  
-  <div class="post-content">
-    <header>
-      
-        <div class="icon"></div>
-        <time datetime="2015-05-09T02:02:07.000Z"><a href="/2015/05/09/AboutDLNAProject/">2015-05-09</a></time>
-      
-      
-  
-    <h1 class="title"><a href="/2015/05/09/AboutDLNAProject/">关于开源 DLNA_iOS_Platinum </a></h1>
-  
-
-    </header>
-    <div class="entry">
-      
-        <p>之前在 <a href="http://www.mobilogics.com.tw/">Mobilogics</a> (非常好的公司 ^^) 公司工作的时候，为了给当时开发的一个硬体 <strong>TV Dongle</strong>（俗称电视棒儿）做了一个基于 <a href="http://baike.baidu.com/link?url=Iv4bsC2wSH6bqD0TbP2vqM2fmYayz_HRVzgZCGBtDMvvcIb8S5faoMcFtCbP8ZIobdbJuLHeiklVj6d7Ti3X7a">DLNA</a> 的 DMS 媒体资源服务器。<br>
-      
-    </div>
-    <footer>
-      
-        
-          <div class="alignleft">
-            <a href="/2015/05/09/AboutDLNAProject/#more" class="more-link">阅读全文</a>
-          </div>
-        
-        
-      
-      <div class="clearfix"></div>
-    </footer>
-  </div>
-</article>
-
-
-
-
-
 
 <nav id="pagination">
   
@@ -437,7 +443,7 @@ var _hmt = _hmt || [];
   <h3 class="title">分类</h3>
   <ul class="entry">
   
-    <li><a href="/categories/Article/">Article</a><small>8</small></li>
+    <li><a href="/categories/Article/">Article</a><small>9</small></li>
   
   </ul>
 </div>

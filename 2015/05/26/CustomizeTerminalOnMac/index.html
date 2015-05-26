@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>第一篇 Hello World | 之隅·王大卫</title>
+  <title>定制 Mac Terminal | 之隅·王大卫</title>
   <meta name="author" content="Wang Shuai">
   
   <meta name="description" content="程序员 ios nodejs java javascript etc.">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="第一篇 Hello World"/>
+  <meta property="og:title" content="定制 Mac Terminal"/>
   <meta property="og:site_name" content="之隅·王大卫"/>
 
   
@@ -86,36 +86,26 @@ var _hmt = _hmt || [];
     <header>
       
         <div class="icon"></div>
-        <time datetime="2015-05-03T06:59:13.000Z"><a href="/2015/05/03/firstpost/">2015-05-03</a></time>
+        <time datetime="2015-05-26T02:03:18.000Z"><a href="/2015/05/26/CustomizeTerminalOnMac/">2015-05-26</a></time>
       
       
   
-    <h1 class="title">第一篇 Hello World</h1>
+    <h1 class="title">定制 Mac Terminal</h1>
   
 
     </header>
     <div class="entry">
       
-        <h3 id="开了个博客">开了个博客</h3><p>记录一些技术之类相关的东西，其他也记录。</p>
+        <p>上午发现因为装了<strong>土行孙</strong>来科学上网，Mac 的Terminal 提示符变了，后来搜了一下找到一片文章，在这里 mark 一下。</p>
 <hr>
-<p>之前封闭让开发一些照片处理和拼接视频的Prototype，发现网上基本没有介绍如何将 iOS 的 Animation，转换成视频文件的内容，于是自己就搞了一个 persistent 的 utility，可以讲自己建立的 Core Animation 持久化输出到视频文件（m4a）的文件里。<br><a id="more"></a><br>使用比较熟悉的 <strong>AVFoundation</strong> 来做，效果还可以，不过感觉效率不是特别的理想，但是要做这样的优化势必要使用更低层的 Media manipulation 的库，而它们的复杂度和 AVFoundation 比…</p>
-<p>使用的语言是 Swift，用的不多，但是感觉 Swift 非常好，它里面的编程范式我感觉就是之后程序开发语言的趋势，良好的函数式编程支持和 extension 扩展是我现阶段比较喜欢的，而且代码写起来的感觉很酷，有点侠客的意思，在语言的框架内提供了相当强的灵活性。个人觉得学个 Swift 语言很不错，如果和号称未来可以比肩 C 的 Go 语言，一起看一下会发现，两个挺像的，因为这样的 features 是计算机语言的未来 (<strong>@_@</strong>)。哪样的 features 呢？在 <a href="https://developer.apple.com/swift/" target="_blank" rel="external">Apple 的 introducing Swift</a> 里面提到</p>
-<ul>
-<li>Closures unified with function pointers</li>
-<li>Tuples and multiple return values</li>
-<li>Generics</li>
-<li>Fast and concise iteration over a range or collection</li>
-<li>Structs that support methods, extensions, protocols.</li>
-<li>Functional programming patterns, e.g.: map and filter</li>
-</ul>
-<p>如果用一个单词形容一下 Swift，就是官网里面用到的那个 <strong>Modern</strong>。 不禁感叹这就是编程语言届最时尚的潮品啊。<strong>程序员潮不潮，不看装扮，看语言。</strong></p>
+<h3 id="Terminal">Terminal</h3><h4 id="自定义提示符">自定义提示符</h4><p>默认的提示符又长又别扭，还是喜欢改成Ubuntu的那种风格。在~/.bash_profile（不是.bashrc了）中添加：</p>
+<figure class="highlight tex"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PS1="<span class="command">\u</span>@<span class="command">\h</span>:<span class="command">\w</span> <span class="formula">$"</span></span><br></pre></td></tr></table></figure>
+<p>需要另外设置颜色的话可以参考这个和那个。</p>
+<h4 id="ls和grep的高亮">ls和grep的高亮</h4><p>向~/.bash_profile中加入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> CLICOLOR=<span class="number">1</span></span><br><span class="line"><span class="built_in">export</span> GREP_OPTIONS=<span class="string">"--color=auto"</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置终端的主题">设置终端的主题</h4><p>到这里就已经有了一个彩色的终端了，然而光有颜色还是不够的。只有精美的字体和搭配良好的颜色才能使命令行显得不是那么的枯燥乏味，因此还需要一个好的主题。这里推荐使用<a href="http://ethanschoonover.com/solarized" target="_blank" rel="external">Solarized</a>。</p>
 <hr>
-<p>这个工具发布到了 <strong>Cocoapods</strong> 中，方便其它项目快速加入，加入 Cocoapods Spec 的过程还挺有意思，网上有篇教程是使用 pull request 来做的，但是后来 pods 改用相对灵活的 Trunk 方式来加入，整个过程简化了，全部用命令行就可以完成新的项目的添加，还是挺方便的，而且也不用像之前需要等待 pods 的工作人员来手动 merge 你的 pull request，可谓即提交即用，<strong>GOOD！</strong> 。因为改了新的提交方式，有意思的事情是，所有之前 pull request 的提交全部都 reject，而且这些 reject 的Spec，大部分我看都是中国人写的，估计和我一样都是参考网上那篇挺好的老教程做的吧 ：）。一篇比较新的介绍可以参考<a href="http://blog.wtlucky.com/blog/2015/02/26/create-private-podspec/" target="_blank" rel="external">这里</a>，免得 Cocoapods 的工作人员一次次的 reject 您老的每一次 pull request。</p>
-<p>继续说这个工具，名字叫<a href="https://github.com/wangshuaidavid/WSDynamicAlbumMaker" target="_blank" rel="external">WSDynamicAlbumMaker</a>，并且已经有2个人star了（<strong>yeah！</strong> ^^!）。具体的使用方法可以看项目里的 <a href="https://github.com/wangshuaidavid/WSDynamicAlbumMaker/blob/master/README.md" target="_blank" rel="external">README.md</a>文件，我觉得写的还算能看懂。</p>
-<p>其中里面还标配了一个 Demo ，功能是用户选择手机中相册的几张照片，然后使用 fade in/out 的方式把照片一个个显示一遍，类似一个简单的动态影集。例子中的功能不是重点，重点是吧 CAnimation 给搞到视频文件了。所有使用人只要专心用写 Core Animation 的动画，导入视频文件的工作，包括计算动画的开始时间之类的，可以用这个工具来做。还可以给视频加个背景音乐。</p>
-<p>有需要的可以试一试。个人认为还行。</p>
-<p>如果有任何建议，可以在 github 中加 issue，真是盼望能有几个 issue 过过瘾…</p>
-<p><img src="http://i2.tietuku.com/5873e5b7a9a0f300.jpg" alt="掮客"></p>
+<p>剩下的看<a href="http://equation85.github.io/blog/customize-terminal-on-mac/" target="_blank" rel="external">原文</a></p>
 
       
     </div>
@@ -128,11 +118,6 @@ var _hmt = _hmt || [];
   </div>
 
         
-  
-  <div class="tags">
-    <a href="/tags/Misc/">Misc</a>, <a href="/tags/git/">git</a>, <a href="/tags/iOS/">iOS</a>
-  </div>
-
       
       <div class="clearfix"></div>
     </footer>
@@ -143,8 +128,8 @@ var _hmt = _hmt || [];
 
  <nav id="pagination" >
     
-    <a href="/2015/05/09/AboutDLNAProject/" class="alignleft prev" >上一页</a>
     
+    <a href="/2015/05/22/tempURLS/" class="alignright next" >下一页</a>
     
     <div class="clearfix"></div>
 </nav>
